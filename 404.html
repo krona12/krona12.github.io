@@ -9,27 +9,45 @@
   <style>
     body {
       text-align: center;
-      padding: 150px;
+      padding: 60px;
+      font-family: 'Arial', sans-serif;
+      background: #f0f0f0; /* Light grey background */
+      color: #333; /* Dark grey text */
     }
     h1 {
-      font-size: 50px;
-    }
-    body {
-      font: 20px Helvetica, sans-serif;
-      color: #333;
+      color: #d35400; /* Slightly orange text */
+      font-size: 48px;
+      margin-bottom: 20px;
     }
     article {
-      display: block;
-      text-align: left;
-      width: 650px;
+      background: white; /* White background for the article */
       margin: 0 auto;
+      padding: 20px;
+      border-radius: 8px; /* Rounded corners */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+      max-width: 650px; /* Max width and centered */
+      text-align: left;
+    }
+    p, li {
+      font-size: 18px; /* Larger font size for readability */
+      line-height: 1.6; /* Improved line spacing */
     }
     a {
-      color: #dc8100;
-      text-decoration: none;
+      color: #3498db; /* Brighter blue for links */
+      text-decoration: none; /* No underline */
+      font-weight: bold; /* Make it bold */
     }
     a:hover {
-      text-decoration: underline;
+      text-decoration: underline; /* Underline on hover */
+    }
+    ul {
+      list-style-type: none; /* No bullets */
+      padding: 0;
+    }
+    li::before {
+      content: '• '; /* Custom bullet points */
+      color: #d35400; /* Matching the h1 color */
+      font-weight: bold; /* Make the bullet points bold */
     }
   </style>
 </head>
@@ -42,7 +60,7 @@
         <li>a mistyped address</li>
         <li>an out-of-date link</li>
       </ul>
-      <p><a href="https://blog.sqiang.net">Return to the homepage</a></p>
+      <p><a href="https://gkay.cn">Return to the homepage</a></p>
     </div>
   </article>
 </body>
