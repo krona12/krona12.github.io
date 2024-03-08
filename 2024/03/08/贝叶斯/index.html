@@ -77,15 +77,21 @@
 
 
 
-<meta name="description" content="C++,python,DL,ML">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Kayy">
-<meta property="og:url" content="http://example.com/index.html">
+<meta name="description" content="本文深入探讨了贝叶斯分类器，涵盖了其基础理论、实现方法及其在处理离散和连续数据特征上的应用。从先验概率和后验概率的定义开始，引入了贝叶斯定理，并说明了如何通过最大后验概率（MAP）来预测分类结果。朴素贝叶斯分类器部分着重介绍了条件独立性假设，并展示了如何使用极大似然估计来计算必要的概率，进而构建分类器。文档还讨论了在遇到概率为零的情况时采用的拉普拉斯平滑技术，以及如何通过假设连续数据遵循特定分布（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="贝叶斯分类器分析">
+<meta property="og:url" content="http://example.com/2024/03/08/%E8%B4%9D%E5%8F%B6%E6%96%AF/index.html">
 <meta property="og:site_name" content="Kayy">
-<meta property="og:description" content="C++,python,DL,ML">
+<meta property="og:description" content="本文深入探讨了贝叶斯分类器，涵盖了其基础理论、实现方法及其在处理离散和连续数据特征上的应用。从先验概率和后验概率的定义开始，引入了贝叶斯定理，并说明了如何通过最大后验概率（MAP）来预测分类结果。朴素贝叶斯分类器部分着重介绍了条件独立性假设，并展示了如何使用极大似然估计来计算必要的概率，进而构建分类器。文档还讨论了在遇到概率为零的情况时采用的拉普拉斯平滑技术，以及如何通过假设连续数据遵循特定分布（">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/%E8%B4%9D%E5%8F%B6%E6%96%AF.assets/image-20240308190056306.png">
+<meta property="og:image" content="http://example.com/images/%E8%B4%9D%E5%8F%B6%E6%96%AF.assets/image-20240308191232871.png">
+<meta property="og:image" content="http://example.com/images/%E8%B4%9D%E5%8F%B6%E6%96%AF.assets/image-20240308193404176.png">
+<meta property="article:published_time" content="2024-03-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-03-08T12:00:50.498Z">
 <meta property="article:author" content="KayLL">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/%E8%B4%9D%E5%8F%B6%E6%96%AF.assets/image-20240308190056306.png">
 
 
 
@@ -115,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/"/>
+  <link rel="canonical" href="http://example.com/2024/03/08/贝叶斯/"/>
 
 
 
 
 
-  <title>Kayy</title>
+  <title>贝叶斯分类器分析 | Kayy</title>
   
 
 
@@ -140,8 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -254,9 +259,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -286,9 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2024/03/08/%E8%B4%9D%E5%8F%B6%E6%96%AF/" itemprop="url">贝叶斯分类器分析</a></h1>
+          <h1 class="post-title" itemprop="name headline">贝叶斯分类器分析</h1>
         
 
         <div class="post-meta">
@@ -324,6 +327,10 @@
           
 
           
+              <div class="post-description">
+                  本文深入探讨了贝叶斯分类器，涵盖了其基础理论、实现方法及其在处理离散和连续数据特征上的应用。从先验概率和后验概率的定义开始，引入了贝叶斯定理，并说明了如何通过最大后验概率（MAP）来预测分类结果。朴素贝叶斯分类器部分着重介绍了条件独立性假设，并展示了如何使用极大似然估计来计算必要的概率，进而构建分类器。文档还讨论了在遇到概率为零的情况时采用的拉普拉斯平滑技术，以及如何通过假设连续数据遵循特定分布（例如高斯分布）来扩展朴素贝叶斯分类器的应用。通过一个实用示例，展示了如何根据天气条件判断是否适合打网球，进一步增强了理论知识的应用性。
+              </div>
+          
 
         </div>
       </header>
@@ -338,16 +345,160 @@
       
 
       
-        
-          本文深入探讨了贝叶斯分类器，涵盖了其基础理论、实现方法及其在处理离散和连续数据特征上的应用。从先验概率和后验概率的定义开始，引入了贝叶斯定理，并说明了如何通过最大后验概率（MAP）来预测分类结果。朴素贝叶斯分类器部分着重介绍了条件独立性假设，并展示了如何使用极大似然估计来计算必要的概率，进而构建分类器。文档还讨论了在遇到概率为零的情况时采用的拉普拉斯平滑技术，以及如何通过假设连续数据遵循特定分布（例如高斯分布）来扩展朴素贝叶斯分类器的应用。通过一个实用示例，展示了如何根据天气条件判断是否适合打网球，进一步增强了理论知识的应用性。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2024/03/08/%E8%B4%9D%E5%8F%B6%E6%96%AF/">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <h1 id="贝叶斯分类器">贝叶斯分类器</h1>
+<h2 id="基础知识">基础知识</h2>
+<p>先验概率 <span class="math display">\[
+P(y=y_i)\\
+\sum_{i=1}^c P(y_i)=1
+\]</span></p>
+<p>后验概率</p>
+<p>给定观测向量 <span class="math inline">\(x\)</span>
+，某个特定类别的概率 <span class="math inline">\(P(y|x)\)</span></p>
+<p>贝叶斯定理 <span class="math display">\[
+\begin{align}
+P(y|x)&amp;=P(x|y)P(y)\\
+&amp;=\frac{P(x|y)P(y)}{P(x)}\\
+&amp;=\frac{p(x|y)P(y)}{\sum_ip(x|y_i)p(y_i)}
+\end{align}
+\]</span> 最大后验概率<span class="math inline">\(MAP\)</span>
+的类别作为预测结果 <span class="math display">\[
+y^*=arg\ maxP(y_i|x)\\
+\begin{cases}
+y_1&amp;if\quad P(y_1|x)&gt;P(y_2|x)\\
+y_2&amp;if\quad P(y_2|x)&gt;P(y_1|x)
+\end{cases}
+\]</span></p>
+<h2 id="朴素贝叶斯">朴素贝叶斯</h2>
+<h3 id="基本方法">基本方法</h3>
+<p><strong>条件独立性假设</strong></p>
+<p>假设 <span class="math inline">\(x\)</span> 之间相互独立，则 <span
+class="math display">\[
+\begin{align}
+P(X=x|Y=c_k)&amp;=P(X^{(1)}=x^{(1)},\ldots ,X^{(n)}=x^{n}|Y=c_k)\\
+&amp;=\prod_{i=1}^nP(X^{(j)}=x^{(j)}|Y=c_k)
+\end{align}
+\]</span> 将上式子代入贝叶斯定理 <span class="math display">\[
+P(Y=c_k|X=x)=\frac{P(Y=c_k)\prod
+_jP(X^{(j)}=x^{(j)}|Y=c_k)}{\sum_kP(Y=c_k)\prod_jP(X^{(j)}=x^{j}|Y=c_k)}
+\]</span> 考虑到对于所有的 <span class="math inline">\(c_k\)</span>
+分母都相同</p>
+<p>因此<strong>贝叶斯分类器目标函数是</strong> <span
+class="math display">\[
+y=arg\ \underset{c_k}{max}P(Y=c_k)\prod_jP(X^{(j)}=x^{(j)}|Y=c_k)
+\]</span> 应用极大似然估计法求相应的概率：</p>
+<p><strong>先验概率 <span
+class="math inline">\(P(Y=c_k)\)</span></strong> 的极大似然估计是：
+<span class="math display">\[
+P(Y=c_k)=\frac{\sum_{i=1}^NI(y_i=c_k)}{N},k=1,2,\ldots,K
+\]</span> 条件概率的极大似然估计： <span class="math display">\[
+P(Y=c_k)=\frac{\sum_{i=1}^NI(y_i=c_k)}{N},k=1,2,3,\ldots,K\\
+P(X^{(j)}=a_{jl}|Y=c_k)=\frac{\sum_{i=1}^NI(x_i^{(j)},y_i=c_k)}{\sum_{i=1}^NI(y_i=c_k)}\\
+j=1,2,\ldots,n;l=1,2,\ldots,S_j;k=1,2,\ldots,K
+\]</span></p>
+<p><strong>说明</strong></p>
+<ul>
+<li><span class="math inline">\(N\)</span> 是样本的总数</li>
+<li><span class="math inline">\(I\)</span>
+是指示函数，当条件为真则取值为 <span class="math inline">\(1\)</span>
+，否则为 <span class="math inline">\(0\)</span></li>
+<li><span class="math inline">\(n\)</span> 表示样本的数量</li>
+<li><span class="math inline">\(S_j\)</span> 表示第 <span
+class="math inline">\(j\)</span> 个特征可能取值的数量</li>
+<li><span class="math inline">\(K\)</span> 表示类别的总数</li>
+<li><span class="math inline">\(x_i^{j}\)</span> 表示第 <span
+class="math inline">\(i\)</span> 个样本的第 <span
+class="math inline">\(j\)</span> 个特征的值</li>
+<li><span class="math inline">\(y_i\)</span> 表示第 <span
+class="math inline">\(i\)</span> 个样本的类别标签</li>
+</ul>
+<h1 id="朴素贝叶斯法的参数估计">朴素贝叶斯法的参数估计</h1>
+<p><strong>输入</strong>：</p>
+<ul>
+<li>训练数据集</li>
+</ul>
+<p><span class="math display">\[
+T={(x_1,y_1),(x_2,y_2),\ldots,(x_N,y_N)}
+\]</span></p>
+<p><span class="math inline">\(x_i^{(j)}\)</span> 第 <span
+class="math inline">\(i\)</span> 个样本的第 <span
+class="math inline">\(j\)</span> 个特征 <span class="math display">\[
+x_i=(x_i^{(1)},x_i^{(2)},\ldots,x_i^{(n)})
+\]</span> <span class="math inline">\(a_{jl}\)</span> 第 <span
+class="math inline">\(j\)</span> 个特征可能取的第 <span
+class="math inline">\(l\)</span> 个值 <span class="math display">\[
+x_i^{(j)}\in {a_{j1},a_{j2},\ldots,a_{(jS_i)}}
+\]</span></p>
+<ul>
+<li>输出</li>
+</ul>
+<p><span class="math inline">\(x\)</span> 的分类</p>
+<p><span class="math inline">\(y_i\in {c_1,c_2,\ldots,c_K}\)</span></p>
+<h2 id="步骤">步骤</h2>
+<ol type="1">
+<li>计算先验概率和条件概率</li>
+</ol>
+<p><span class="math display">\[
+P(y=c_k)=\frac{\sum_{i=1}^NI(y_i=c_k)}{N},k=1,2,\ldots,K\\
+P(X^{(j)}=a_{jl}|Y=c_k)=\frac{\sum_{i=1}^NI(x_i^{(j)}=a_{jl},y_i=c_k)}{\sum_{i=1}^NI(y_i=c_k)}\\
+j=1,2,\ldots,n;l=1,2,\ldots,S_j;k=1,2,\ldots,K
+\]</span></p>
+<ol start="2" type="1">
+<li>对于示例计算</li>
+</ol>
+<p>对于给定的示例 <span
+class="math inline">\(x=\left(x_i^{(1)},x_i^{(2)},\ldots,x_i^{(n)}\right)^T\)</span></p>
+<p>计算 <span class="math display">\[
+P(Y=c_k)\prod_{j=1}^nP(X^{(j)}|Y=c_k),k=1,2,\ldots,K
+\]</span></p>
+<ol start="3" type="1">
+<li>确定 <span class="math inline">\(x\)</span> 的类别</li>
+</ol>
+<p><span class="math display">\[
+y=arg\ \underset {c_k}{max}P(Y=c_k)\prod_{j=1}^nP(X^{(j)}=x^{(j)}|Y=c_k)
+\]</span></p>
+<h2 id="应用示例">应用示例</h2>
+<p>在下面这张表格中，在某些情况下我们是否应该打网球。</p>
+<p>给定在某特定天气参数情况下，判断我们是否应该打网球</p>
+<figure>
+<img src="/images/贝叶斯.assets/image-20240308190056306.png"
+alt="image-20240308190056306" />
+<figcaption aria-hidden="true">image-20240308190056306</figcaption>
+</figure>
+<h3 id="求不同特征维度下的条件概率">求不同特征维度下的条件概率</h3>
+<p>例如在<code>outlook</code>维度下， <span class="math display">\[
+P(X_{sun}^{out}|Y=yes)=\frac 29\\
+P(X_{over}^{out}|Y=yes)=\frac 49\\
+\ldots\ldots\\
+P(X_{sun}^{out}|Y=no)=\frac 35\\
+\ldots\ldots
+\]</span></p>
+<figure>
+<img src="/images/贝叶斯.assets/image-20240308191232871.png"
+alt="image-20240308191232871" />
+<figcaption aria-hidden="true">image-20240308191232871</figcaption>
+</figure>
+<p>对于 <span class="math inline">\(x=(sunny,how,normal,weak)\)</span>
+， <span class="math display">\[
+y^*=arg \underset{y\in
+{yes,no}}{max}P(y)P(sunny|y)P(hot|y)P(normal|y)P(weak|y)
+\]</span> 当 <span class="math inline">\(y=no\)</span>
+时，代入进行计算得到 <span class="math inline">\(0.0141\)</span></p>
+<p>当 <span class="math inline">\(y=yes\)</span> 时，带入进行计算得到
+<span class="math inline">\(0.0069\)</span> ，因此选择 <span
+class="math inline">\(no\)</span></p>
+<h2 id="平滑处理">平滑处理</h2>
+<p>考虑到极大似然估计可能会出现所要估计的<font color='red'>概率值为0</font>的情况，这时为影响到后续概率的计算结果，使<font color='red'>分类产生偏差</font></p>
+<p><strong>解决</strong>：采用<font color='red'>拉普拉斯平滑</font>
+<span class="math display">\[
+\hat
+P(X^{(j)}=a_{jl}|Y=c_k)=\frac{\sum_{i=1}^NI(x_i^{(j)},y_i=c_k)+1}{\sum_{i=1}^NI(y_i=c_k)+{S_j}}\\
+\hat P(Y=c_k)=\frac{\sum_{i=1}^NI(y_i=c_k)+{1}}{N+{K}}
+\]</span> <img src="/images/贝叶斯.assets/image-20240308193404176.png"
+alt="image-20240308193404176" /></p>
+<h2 id="连续特征处理">连续特征处理</h2>
+<p>假定数据在给定类别下遵循一定的分布，例如假设数据遵循高斯分布，称为<code>高斯朴素贝叶斯分类器</code></p>
+<p>通过这种假设，根据连续特征的实际观测计算出给定类别下该值的概率密度，进而用于计算后验概率，做出分类决策</p>
+
       
     </div>
     
@@ -364,12 +515,28 @@
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2024/03/06/6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%AE%A1%E7%AE%97/" rel="next" title="深度学习计算">
+                <i class="fa fa-chevron-left"></i> 深度学习计算
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -379,382 +546,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/06/6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%AE%A1%E7%AE%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kayy">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2024/03/06/6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%AE%A1%E7%AE%97/" itemprop="url">深度学习计算</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-03-06T17:30:23+08:00">
-                2024-03-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          深度学习计算相关知识笔记
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2024/03/06/6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%AE%A1%E7%AE%97/">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/05/%E5%85%AC%E5%BC%8F%E8%A7%A3%E5%86%B3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kayy">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2024/03/05/%E5%85%AC%E5%BC%8F%E8%A7%A3%E5%86%B3/" itemprop="url">关于hexo博客的公式显示问题解决方案</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-03-05T00:00:00+08:00">
-                2024-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          博客的初始化，next主题部署，公式显示
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2024/03/05/%E5%85%AC%E5%BC%8F%E8%A7%A3%E5%86%B3/">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/1970/01/01/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kayy">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/1970/01/01/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" itemprop="url">基于hexo的博客搭建</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="1970-01-01T08:00:02+08:00">
-                1970-01-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          手把手教搭建博客
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/1970/01/01/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -762,6 +558,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -782,8 +582,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -856,6 +665,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">贝叶斯分类器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.1.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF"><span class="nav-number">1.2.</span> <span class="nav-text">朴素贝叶斯</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.1.</span> <span class="nav-text">基本方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%B3%95%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1"><span class="nav-number">2.</span> <span class="nav-text">朴素贝叶斯法的参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.1.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.2.</span> <span class="nav-text">应用示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E4%B8%8D%E5%90%8C%E7%89%B9%E5%BE%81%E7%BB%B4%E5%BA%A6%E4%B8%8B%E7%9A%84%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87"><span class="nav-number">2.2.1.</span> <span class="nav-text">求不同特征维度下的条件概率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B3%E6%BB%91%E5%A4%84%E7%90%86"><span class="nav-number">2.3.</span> <span class="nav-text">平滑处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E7%89%B9%E5%BE%81%E5%A4%84%E7%90%86"><span class="nav-number">2.4.</span> <span class="nav-text">连续特征处理</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1012,6 +837,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
