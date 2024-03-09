@@ -1823,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #4fffbd;
+  background: #ffff1a;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3119,6 +3119,15 @@ pre .javascript .function {
   .pagination {
     margin: 8px 0 0;
   }
+}
+.post-toc .nav .nav-child {
+  display: block;
+}
+.post-toc ol {
+  font-size: 13px;
+}
+toc:enable: true {
+  wrap: true;
 }
 body {
   background: url("https://picture-krona.oss-cn-shenzhen.aliyuncs.com/Picture/Yuya.jpg");
