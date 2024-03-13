@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://picture-krona.oss-cn-shenzhen.aliyuncs.com/Picture/K.svg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://picture-krona.oss-cn-shenzhen.aliyuncs.com/Picture/K.svg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="https://picture-krona.oss-cn-shenzhen.aliyuncs.com/Picture/K.svg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="https://picture-krona.oss-cn-shenzhen.aliyuncs.com/Picture/K.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="2 基于关键故障特征筛选的朴素贝叶斯故障诊断算法 2.1 引言 2.2 传统贝朴素贝叶斯分类器 不足：  没有对系统变量进行选择，有利于分类的、显著的故障信息容易在多个条件概率乘积中被掩盖不利于分类性能的提高 独立性假设在实际问题可能并不成立  2.3 变量选择与特征提取 定义： 相关变量：与分类密切相关的 无关变量：与分类无关的 冗余信息：变量包含的重复信息 2.3.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kayy">
+<meta property="og:url" content="http://example.com/2024/03/13/%E5%9F%BA%E4%BA%8E%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E8%AF%8A%E6%96%AD/index.html">
+<meta property="og:site_name" content="Kayy">
+<meta property="og:description" content="2 基于关键故障特征筛选的朴素贝叶斯故障诊断算法 2.1 引言 2.2 传统贝朴素贝叶斯分类器 不足：  没有对系统变量进行选择，有利于分类的、显著的故障信息容易在多个条件概率乘积中被掩盖不利于分类性能的提高 独立性假设在实际问题可能并不成立  2.3 变量选择与特征提取 定义： 相关变量：与分类密切相关的 无关变量：与分类无关的 冗余信息：变量包含的重复信息 2.3.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-13T04:48:49.881Z">
+<meta property="article:modified_time" content="2024-03-13T04:53:11.839Z">
+<meta property="article:author" content="KayLL">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2024/03/13/基于贝叶斯网络故障诊断/"/>
+
+
+
+
+
+  <title> | Kayy</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Kayy</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Welcome to my kingdom</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/https:/gkay.cn/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            Schedule
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/13/%E5%9F%BA%E4%BA%8E%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E8%AF%8A%E6%96%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kayy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-03-13T12:48:49+08:00">
+                2024-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="基于关键故障特征筛选的朴素贝叶斯故障诊断算法">2
+基于关键故障特征筛选的朴素贝叶斯故障诊断算法</h1>
+<h2 id="引言">2.1 引言</h2>
+<h2 id="传统贝朴素贝叶斯分类器">2.2 传统贝朴素贝叶斯分类器</h2>
+<p>不足：</p>
+<ul>
+<li>没有对系统变量进行选择，有利于分类的、显著的故障信息容易在多个条件概率乘积中被掩盖不利于分类性能的提高</li>
+<li>独立性假设在实际问题可能并不成立</li>
+</ul>
+<h2 id="变量选择与特征提取">2.3 变量选择与特征提取</h2>
+<p>定义：</p>
+<p>相关变量：与分类密切相关的</p>
+<p>无关变量：与分类无关的</p>
+<p>冗余信息：变量包含的重复信息</p>
+<h3 id="基于互信息的变量选择方法">2.3.1 基于互信息的变量选择方法</h3>
+<p>变量选择的评价标准，对所选变量或变量组合优劣程度做评价的指标</p>
+<ul>
+<li>距离度量</li>
+<li>一致性度量</li>
+<li>依赖性度量</li>
+<li>互信息度量</li>
+</ul>
+<p><strong>互信息度量</strong>：即可对线性也可非线性度量，无需知道样本数据的先验分布知识，不依赖数据分布情况</p>
+<p><code>Shannon</code>的信息理论，通过概率同济方法计算信息熵和互信息:
+<span class="math display">\[
+H(V)=-\int_vp(v)\log p(v)dv
+\]</span> 给定两个随机变量 <span class="math inline">\(V_1\)</span> 和
+<span class="math inline">\(V_2\)</span> ，其联合信息熵 <span
+class="math inline">\(H(V_1,V_2)\)</span> 可由联合概率分布 <span
+class="math inline">\(p(v_1,v_2)\)</span> 进行描述 <span
+class="math display">\[
+H(V_1,V_2)=-\iint_{v_1,v_2}p(v_1,v_2)\log p(v_1,v_2)dv_1dv_2
+\]</span> <strong>互信息定义</strong>:两个随机变量共同包含的信息量 <span
+class="math display">\[
+\begin{align}
+I(V_1,V_2)&amp;=H(V_1)-H(V_1|V_2)=H(V_2)-H(V_2)-H(V_2|V_1)\\
+&amp;=\iint_{v_2,v_1}p(v_1,v_2)\log
+{\frac{p(v_1,v_2)}{p(v_1)p(v_2)}}dv_1dv_2
+\end{align}
+\]</span></p>
+<h2 id="过程">2.4 过程</h2>
+<ol type="1">
+<li>计算单变量互信息，选取最大的，加入到<span
+class="math inline">\(V_D\)</span></li>
+<li>选取剩余的 <span class="math inline">\(J-i\)</span>
+个，分别计算多变量与故障类别的互信息，选取最大的，加入到 <span
+class="math inline">\(V_D\)</span></li>
+<li>直到 <span class="math inline">\(i==J\)</span></li>
+<li>按照 <span class="math inline">\(V_D\)</span>
+的顺序，每次增加一个变量放入变量矩阵中，通过ICA独立化，特征离散化，得到
+<span class="math inline">\(k\)</span>
+个离散区间，计算训练数据在每个类别的概率，得到概率表，验证模型分类性能</li>
+<li>重复4，直到所有变量都完成建模，得到分别有 <span
+class="math inline">\(1,2,\ldots,n\)</span>
+个变量的模型，进行排序，选择最好的模型</li>
+</ol>
+<h1 id="基于动静态信息协同分析的分布式贝叶斯网站在线故障诊断">3
+基于动静态信息协同分析的分布式贝叶斯网站在线故障诊断</h1>
+<h2 id="引言-1">3.1 引言</h2>
+<ul>
+<li>混合的故障特性使得单一静态故障信息对故障难以全面描述</li>
+</ul>
+<h2 id="慢特征分析">3.2 慢特征分析</h2>
+<p>慢特征分析 (Slow Feature analysis,SFA)
+是一种有效提取动态信息的方法，从时间序列中提取出随时间变化尽可能慢的波动特征</p>
+<p>SFA算法如下</p>
+<p>设第 <span class="math inline">\(j\)</span> 个时间序列 <span
+class="math inline">\(x_j(t)\)</span> 经过投影后输出为 <span
+class="math inline">\(y_j(t)\)</span> ，则 <span
+class="math inline">\(y_j(t)\)</span> 表示： <span
+class="math display">\[
+y_j(t)=g_j(x(t))
+\]</span> 其中 <span class="math inline">\(g_j(\cdot)\)</span>
+是变化方程</p>
+<p>SFA是为了找到变化尽可能缓慢的特征，其目标函数为 <span
+class="math display">\[
+min\quad \Delta(y_i)=\langle \dot y_i^2\rangle_t
+\]</span> 约束条件 <span class="math display">\[
+\langle y_j\rangle_t=0\\
+\langle y_j^2\rangle_t=1\\
+\forall i&lt;j,\langle y_iy_j\rangle_t=0
+\]</span>
+表面将常量作为输出结果以及保持变量不存在相关关系，即所得到的慢特征之间不存在冗余信息</p>
+<p>因此输出的特征按照等级排序，第一个特征是最慢的特征</p>
+<h2 id="基于动静态协同的分布式贝叶斯网络的在线故障诊断方法">3.3
+基于动静态协同的分布式贝叶斯网络的在线故障诊断方法</h2>
+<ol type="1">
+<li>首先提取关键静态故障信息，对所有故障类型进行初步诊断</li>
+<li>利用SFA提取多个故障的动态信息，并与关键静态信息相结合</li>
+<li>协同分析提取丰富的故障特性，基于不同故障特性进行分布式建模，建立诊断子网</li>
+</ol>
+<h3 id="分布式贝叶斯网络离线建模">3.3.1 分布式贝叶斯网络离线建模</h3>
+<h3 id="基于sfa的离线划分准则sfa-pc">3.3.3.1
+基于SFA的离线划分准则（SFA-PC）</h3>
+<p>SFA-PC的设计思路是将各个故障类型根据<strong>动态故障信息</strong>的<strong>快慢进行分子组</strong>，将混杂的信息进行有效解耦，后续对<strong>每个子组建立诊断子网</strong></p>
+<p><img
+src="https://picture-krona.oss-cn-shenzhen.aliyuncs.com/Picture/20240309101748.png" /></p>
+<ul>
+<li>构建全局话故障诊断网络模型（GBN）</li>
+<li>将不可分故障集进行子组划分</li>
+<li>建立精细化的局部故障诊断子网模型（PBN）</li>
+</ul>
+<h3 id="分布式贝叶斯网络在线故障诊断">3.3.2
+分布式贝叶斯网络在线故障诊断</h3>
+<ol type="1">
+<li>将 <span class="math inline">\(x_t\)</span>
+输入全局诊断网络，如果是可分的，则计算最大后验概率（正确概率）是否小于阈值，如果小于阈值，则划分为不可分故障。如果大于，则得到诊断结果</li>
+<li>如果是不可分的，通过SFA-DC在线判别子组，根据子组对应的PBN进行诊断</li>
+</ol>
+<p><img
+src="https://picture-krona.oss-cn-shenzhen.aliyuncs.com/Picture/20240309104115.png" /></p>
+<h1 id="基于因果分析的多层次贝叶斯网络根源故障诊断方法研究">4
+基于因果分析的多层次贝叶斯网络根源故障诊断方法研究</h1>
+<h2 id="引言-2">4.1 引言</h2>
+<p>非平稳因素：方差和均值随着时间变化的变量成为非平稳变量，过程称为非平稳过程</p>
+<p>非平稳因素对追溯故障根源有不利影响</p>
+<p>用差分消除非平稳特性的影响，但会损失有效的过程信息</p>
+<p><strong>提出一种基于精细化因果分析的多层次贝叶斯网络模型</strong>，用于根源故障变量的追溯和故障传播路径的识别</p>
+<ol type="1">
+<li>首先将非平稳变量和平稳变量分离，构建两层因果诊断网络</li>
+<li><strong>底层由诊断子网</strong>组成，对<strong>非平稳变量进行分组</strong>，提取<strong>局部潜在因果关</strong>系，对故障信息的传递进行精细化描述，<strong>避免</strong>非平稳性带来的<strong>伪回归</strong></li>
+<li><strong>上层网络</strong>用于描述<strong>全局因果关系</strong>，通过<strong>集成诊断子网的因果</strong>关系，挖掘完善的整体因果关系结构</li>
+</ol>
+<h2 id="格兰杰因果分析">4.2 格兰杰因果分析</h2>
+<p>格兰杰因果分析简述：</p>
+<ul>
+<li>构建模型，为变量 <span class="math inline">\(X\)</span> 和 <span
+class="math inline">\(Y\)</span> 建立时间序列模型</li>
+<li>增加滞后项，在预测变量 <span class="math inline">\(Y\)</span>
+的模型中包含变量 <span class="math inline">\(X\)</span> 的滞后项</li>
+<li>统计检验，进行 <span class="math inline">\(F\)</span> 检验来评估加入
+<span class="math inline">\(X\)</span> 的滞后项是否显著提高了对 <span
+class="math inline">\(Y\)</span> 的预测能力</li>
+<li>因果关系判断</li>
+</ul>
+<p>假设 <span class="math inline">\(x_1(t)\)</span> 和 <span
+class="math inline">\(x_2(t)\)</span>
+是两个变量序列，那么利用不同历史数据对变量 <span
+class="math inline">\(x_1(t)\)</span> 预测可表示为： <span
+class="math display">\[
+\begin{align}
+x_1(t)&amp;=\sum_{i=1}^q\alpha
+_{1,i}x_1(t-i)+\sum_{j=1}^q\sigma_{1,j}x_2(t-j)+\eta_1\\
+x_1(t)&amp;=\sum_{i=1}^q\alpha _{2,i}x_1(t-i)+\eta _2
+\end{align}
+\]</span> 前者表示的是用 <span class="math inline">\(x_1(t)\)</span> 和
+<span class="math inline">\(x_2(t)\)</span> 的历史数据共同表示预测 <span
+class="math inline">\(x_1(t)\)</span> 的全模型，后者表示仅用 <span
+class="math inline">\(x_1(t)\)</span> 进行预测</p>
+<p><span class="math inline">\(\alpha\ \delta\)</span> 是模型参数，<span
+class="math inline">\(\eta\)</span> 是对应模型的残差， <span
+class="math inline">\(q\)</span>
+表示时延长度，通过比较两者残差可以得到因果关系的判别依据 <span
+class="math display">\[
+FG=\frac{(\eta_2-\eta_1)/q}{\eta_1/(n-2q-1)}
+\]</span> 当 <span class="math inline">\(FG\)</span> 小于0.05时， <span
+class="math inline">\(x_2(t)\)</span> 是 <span
+class="math inline">\(x_1(t)\)</span> 的格兰杰原因</p>
+<h2 id="稀疏协整分析">4.3 稀疏协整分析</h2>
+<p>协整分析(Cointegration analysis)简述：</p>
+<p>如果两个或多个时间序列虽然自身是平稳的，但是他们的线性组合可以是平稳的，那么这些序列是协整的</p>
+<p>传统CA中所求协整向量与所有非平稳项链有关，导致描述局部依赖关系的协整信息被掩盖</p>
+<p><em>无法准确地捕捉到仅在变量的子集之间存在的细微但重要的依赖关系</em></p>
+<p>稀疏协整算法（Sparse cointegration analysis）简介：</p>
+<p>加入了惩罚函数，获得稀疏的协整向量</p>
+<p>更能挖掘局部的协整关系信息，因此其得到的因果关系更具有解释性</p>
+<h2 id="面向非平稳过程的非精细化因果分析建模">4.4
+面向非平稳过程的非精细化因果分析建模</h2>
+<h3 id="底层因果关系网络构建">4.4.1 底层因果关系网络构建</h3>
+<ol type="1">
+<li>对于正常数据进行ADF检验（Augmented
+Dickey-Fuller）得到两个数据集，非平稳和平稳</li>
+<li>将非平稳变量根据协整关系的强度进行分组
+<ul>
+<li>利用SCA计算稀疏协整矩阵</li>
+<li>计算每个稀疏协整向量对应的平稳残差序列</li>
+<li>利用ADF检验评估每个平稳残差序列的稳定性，越小越稳定</li>
+<li>根据通统计量 <span class="math inline">\(T_l\)</span>
+进行变量分组，将 <span class="math inline">\(T_l\)</span>
+降序排列，保留最小的统计量
+对应的稀疏协整向量，该向量中非零稀疏对应的非平稳变量被划分为一组，加入
+<span class="math inline">\(G\)</span> 中</li>
+<li>更新代分组的变量集 <span class="math inline">\(X_w\)</span>
+，迭代，指导 <span class="math inline">\(X_w\)</span>
+中的变量数目为0</li>
+</ul></li>
+<li>利用GCA对每个变量子组分别求变量的因果关系，构建局部的因果关系子网</li>
+</ol>
+<h3 id="上层因果关系的构建">4.4.2 上层因果关系的构建</h3>
+<ol type="1">
+<li>计算每个子组的平稳残差序列 <span
+class="math inline">\(\gamma_i\)</span> ，<span
+class="math inline">\(i\)</span> 表示第 <span
+class="math inline">\(i\)</span> 个子组</li>
+<li>利用GCA提取集合中所有平稳变量和平稳残差序列间的因果关系</li>
+</ol>
+<h2 id="基于因果分析的多层次根源故障诊断模型">4.5
+基于因果分析的多层次根源故障诊断模型</h2>
+<figure>
+<img
+src="https://picture-krona.oss-cn-shenzhen.aliyuncs.com/Picture/image-20240309140433601.png"
+alt="image-20240309140433601" />
+<figcaption aria-hidden="true">image-20240309140433601</figcaption>
+</figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2024/03/08/%E8%B4%9D%E5%8F%B6%E6%96%AF/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yourname" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:yourname@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%85%B3%E9%94%AE%E6%95%85%E9%9A%9C%E7%89%B9%E5%BE%81%E7%AD%9B%E9%80%89%E7%9A%84%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%95%85%E9%9A%9C%E8%AF%8A%E6%96%AD%E7%AE%97%E6%B3%95"><span class="nav-text">2
+基于关键故障特征筛选的朴素贝叶斯故障诊断算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-text">2.1 引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9F%E8%B4%9D%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-text">2.2 传统贝朴素贝叶斯分类器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E9%80%89%E6%8B%A9%E4%B8%8E%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="nav-text">2.3 变量选择与特征提取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E4%BA%92%E4%BF%A1%E6%81%AF%E7%9A%84%E5%8F%98%E9%87%8F%E9%80%89%E6%8B%A9%E6%96%B9%E6%B3%95"><span class="nav-text">2.3.1 基于互信息的变量选择方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%87%E7%A8%8B"><span class="nav-text">2.4 过程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%8A%A8%E9%9D%99%E6%80%81%E4%BF%A1%E6%81%AF%E5%8D%8F%E5%90%8C%E5%88%86%E6%9E%90%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%AB%99%E5%9C%A8%E7%BA%BF%E6%95%85%E9%9A%9C%E8%AF%8A%E6%96%AD"><span class="nav-text">3
+基于动静态信息协同分析的分布式贝叶斯网站在线故障诊断</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E8%A8%80-1"><span class="nav-text">3.1 引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%85%A2%E7%89%B9%E5%BE%81%E5%88%86%E6%9E%90"><span class="nav-text">3.2 慢特征分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%8A%A8%E9%9D%99%E6%80%81%E5%8D%8F%E5%90%8C%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E7%9A%84%E5%9C%A8%E7%BA%BF%E6%95%85%E9%9A%9C%E8%AF%8A%E6%96%AD%E6%96%B9%E6%B3%95"><span class="nav-text">3.3
+基于动静态协同的分布式贝叶斯网络的在线故障诊断方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E7%A6%BB%E7%BA%BF%E5%BB%BA%E6%A8%A1"><span class="nav-text">3.3.1 分布式贝叶斯网络离线建模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8Esfa%E7%9A%84%E7%A6%BB%E7%BA%BF%E5%88%92%E5%88%86%E5%87%86%E5%88%99sfa-pc"><span class="nav-text">3.3.3.1
+基于SFA的离线划分准则（SFA-PC）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E5%9C%A8%E7%BA%BF%E6%95%85%E9%9A%9C%E8%AF%8A%E6%96%AD"><span class="nav-text">3.3.2
+分布式贝叶斯网络在线故障诊断</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%9B%A0%E6%9E%9C%E5%88%86%E6%9E%90%E7%9A%84%E5%A4%9A%E5%B1%82%E6%AC%A1%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E6%A0%B9%E6%BA%90%E6%95%85%E9%9A%9C%E8%AF%8A%E6%96%AD%E6%96%B9%E6%B3%95%E7%A0%94%E7%A9%B6"><span class="nav-text">4
+基于因果分析的多层次贝叶斯网络根源故障诊断方法研究</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E8%A8%80-2"><span class="nav-text">4.1 引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%BC%E5%85%B0%E6%9D%B0%E5%9B%A0%E6%9E%9C%E5%88%86%E6%9E%90"><span class="nav-text">4.2 格兰杰因果分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%80%E7%96%8F%E5%8D%8F%E6%95%B4%E5%88%86%E6%9E%90"><span class="nav-text">4.3 稀疏协整分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E9%9D%9E%E5%B9%B3%E7%A8%B3%E8%BF%87%E7%A8%8B%E7%9A%84%E9%9D%9E%E7%B2%BE%E7%BB%86%E5%8C%96%E5%9B%A0%E6%9E%9C%E5%88%86%E6%9E%90%E5%BB%BA%E6%A8%A1"><span class="nav-text">4.4
+面向非平稳过程的非精细化因果分析建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E5%9B%A0%E6%9E%9C%E5%85%B3%E7%B3%BB%E7%BD%91%E7%BB%9C%E6%9E%84%E5%BB%BA"><span class="nav-text">4.4.1 底层因果关系网络构建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E5%B1%82%E5%9B%A0%E6%9E%9C%E5%85%B3%E7%B3%BB%E7%9A%84%E6%9E%84%E5%BB%BA"><span class="nav-text">4.4.2 上层因果关系的构建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%9B%A0%E6%9E%9C%E5%88%86%E6%9E%90%E7%9A%84%E5%A4%9A%E5%B1%82%E6%AC%A1%E6%A0%B9%E6%BA%90%E6%95%85%E9%9A%9C%E8%AF%8A%E6%96%AD%E6%A8%A1%E5%9E%8B"><span class="nav-text">4.5
+基于因果分析的多层次根源故障诊断模型</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">KayLL</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+<div class="powered-by">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <i class="fa fa-user-md"></i>
+    <span id="busuanzi_container_site_uv">
+        本站访客数:<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_pv">
+        本站访问量<span id="busuanzi_value_site_pv"></span>
+    </span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  
+
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('copy').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')  // Corrected the line break symbol here
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('copy done')
+          else $(this).text('copy failure')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('copy')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+</body>
+</html>
+
+
+
+
+
+
