@@ -1,140 +1,149 @@
 # Site
-repository: Git repository where your resume will be hosted, only required if you are hosting on GitHub (eg. sproogen/modern-resume-theme)
-# favicon: Directory of your favicon (eg. images/favicon.ico)(optional)
+repository: krona12/krona12.github.io
+url: https://krona12.github.io
+baseurl: ""
+favicon: assets/favicon.ico
+lang: en
 
 # Content configuration version
 version: 2
 
 # Personal info
-name: Your Name
-title: Your job title
-email: Your email (optional)
-# email_title: Email (Email title override)
-phone: Your phone number (optional)
-# phone_title: Phone (Phone title override)
-website: Your website (eg. https://google.com)(optional)
-# website_title: Web (Website title override)
+name: Kai Liu
+title: Embodied AI / Vision-Language Navigation / Robotic 3D Assets
+email:
+phone:
+website: https://krona12.github.io
 
-# Dark Mode (true/false/never)
-darkmode: false
+darkmode: never
 
-# Social links
-twitter_username: jekyllrb
-github_username:  jekyll
-stackoverflow_username: "00000001"
-dribbble_username: jekyll
-facebook_username: jekyll
-flickr_username: jekyll
-instagram_username: jekyll
-linkedin_username: jekyll
-xing_username: jekyll
-pinterest_username: jekyll
-youtube_username: jekyll
-orcid_username: 0000-0000-0000-0000
-googlescholar_username: D847cGsAAAAJ
+# Social links. Fill these later when account names are ready.
+twitter_username:
+github_username: krona12
+stackoverflow_username:
+dribbble_username:
+facebook_username:
+flickr_username:
+instagram_username:
+linkedin_username:
+xing_username:
+pinterest_username:
+youtube_username:
+orcid_username:
+googlescholar_username:
 
-# Additional icon links
-additional_links:
-- title: Link name
-  icon: Font Awesome brand icon name (eg. fab fa-twitter) (https://fontawesome.com/icons?d=gallery&s=brands&m=free)
-  url: Link url (eg. https://google.com)
-# - title: another link
-#   icon: font awesome brand icon name (eg. fab fa-twitter) (https://fontawesome.com/icons?d=gallery&s=brands&m=free)
-#   url: Link url (eg. https://google.com)
-
-# Google Analytics and Tag Manager
-# Using more than one of these may cause issues with reporting
-# gtm: "GTM-0000000"
-# gtag: "UA-00000000-0"
-# google_analytics: "UA-00000000-0"
+additional_links: []
 
 # About Section
-# about_title: About Me (Use this to override about section title)
-about_profile_image: Directory of profile image (eg. images/profile.jpg)
-about_content: | # this will include new lines to allow paragraphs
-  Write an awesome description about yourself here, this supports markdown, so you can add [links](http://foobar.com) and highlight things <mark>like this</mark>.
+about_title: About
+about_profile_image: assets/profile.png
+about_content: |
+  Kai Liu received the B.E. degree in Automation from the School of Automation, Central South University in 2025. He is currently pursuing the M.S. degree in Software Engineering at Xi'an Jiaotong University.
 
-  You can even add paragraphs by using empty lines like this and add anything else [markdown](https://www.markdownguide.org/getting-started#what-is-markdown) supports such as
-    - Lists
-    - Tables
-    - <a href="google.com">Links</a>
-    - Images ![alt text](/images/landscape-trees.jpg "Trees")
+  His research interests include embodied intelligence, vision-language navigation, vision-language-action models, computer vision, and physically grounded 3D asset generation for robotics.
 
 content:
-  - title: Projects # Title for the section
-    layout: list # Type of content section (list/text)
-    content:
-      - layout: left
-        border: weak  # Value of `weak` will display a weak border below this item. # Any 
-                      # other value (or no value) means no border will be displayed
-        title: Project name
-        link: Link to project (eg. sproogen.github.io/modern-resume-theme)(optional)
-        link_text: Link Text
-        additional_links:
-          - title:  Github page for project (eg. sproogen/modern-resume-theme)
-            icon: fab fa-github
-            url: Link to project (eg. sproogen.github.io/modern-resume-theme)(optional)
-          - title:  Github page for project (eg. sproogen/modern-resume-theme)
-            icon: fab fa-github
-            url: Link to project (eg. sproogen.github.io/modern-resume-theme)(optional)
-        quote: >
-          Short overview of the project (optional)
-        description: | # this will include new lines to allow paragraphs
-          Description about the work on/with the project
-  - title: Experience
+  - title: Research Focus
+    layout: text
+    content: |
+      I am interested in building embodied agents that can connect language, perception, memory, geometry, and action. My recent work spans open-vocabulary navigation, landmark-grounded spatial reasoning, articulated 3D asset generation, and surveys of Vision-Language-Action systems.
+
+      **Standalone project pages:** [LANDER-Nav](/projects/lander-nav/) and [PhysArtGen](/projects/physartgen/).
+
+  - title: Selected Work
     layout: list
     content:
-      - layout: right
-        title: Company name
-        sub_title: Job title
-        caption: Date Range (eg. November 2016 - present)
-        link: Link to company (optional)
+      - layout: top-right
+        title: LANDER-Nav
+        sub_title: Progressive Landmark-Schema Grounding for Multi-Granularity Open-Vocabulary Navigation
+        caption: AAAI submission, first author | 2026.3-present
+        link: /projects/lander-nav/
+        link_text: Project page
+        additional_links: []
         quote: >
-          Short description of the company (optional)
-        description: | # this will include new lines to allow paragraphs
-          Description of role
+          A navigation framework that grounds free-form language into target-anchor-context-relation landmark schemas.
+        description: |
+          LANDER-Nav addresses multi-granularity open-vocabulary navigation, where an embodied agent must locate category-, region-, or instance-level targets in unseen environments. The method avoids compressing complex instructions into a single query and instead performs progressive grounding over frontier evidence, object-memory entity binding, and verifiable endpoint selection.
+
+          It introduces role-conditioned spatial voting, landmark-anchored object binding, and Landmark-Ray Endpoint Search. On LangMap, Overall SR/SPL improves from 42.0/25.3 to 45.5/28.6 compared with MTU3D, with stronger gains on region- and instance-level targets.
+
+      - layout: top-right
+        title: PhysArtGen
+        sub_title: Interactive and Physically Controllable Articulated 3D Assets Generation
+        caption: AAAI submission, second author | 2025.7-2026.2
+        link: /projects/physartgen/
+        link_text: Project page
+        additional_links: []
+        quote: >
+          A text-conditioned pipeline for generating articulated 3D assets that can be compiled into URDF and used in robotic interaction.
+        description: |
+          PhysArtGen targets scalable creation of diverse, physically coherent, and interactive 3D assets for embodied intelligence. The framework goes from semantic understanding, to part-level 3D generation, to Actor-Critic-Verifier URDF optimization.
+
+          I participated in the Physics Adapter design for preserving relative part scale and position, the multi-agent URDF refinement pipeline, PhysArtSet construction, and experimental evaluation. PhysArtSet covers 29 object categories, 16 canonical part types, over 1,000 high-quality instances, and 2,800 synthesized parts.
+
+      - layout: top-right
+        title: Embodied AI Large Models Survey
+        sub_title: A Comprehensive Review and Future Perspectives on Embodied AI Large Models
+        caption: Published in Radio Engineering, second author | 2025.6-2025.9
+        additional_links: []
+        quote: >
+          A survey of Vision-Language-Action models, embodied AI resources, and open research challenges.
+        description: |
+          This survey reviews embodied AI large models with a focus on VLA systems. It summarizes visual encoders, language backbones, multimodal fusion strategies, action-token modeling, diffusion- and flow-based continuous action generation, simulators, datasets, benchmarks, and evaluation metrics.
+
+          The review covers resources such as AI2-THOR, Habitat, Isaac Sim/Gym, OXE, BridgeData V2, ALFRED, and LIBERO, and discusses challenges including generalization, data efficiency, long-horizon reasoning, and real-time response.
+
   - title: Education
     layout: list
     content:
       - layout: top-right
-        title: Institution name
-        sub_title: Qualifications (eg. BA Performing Arts)
-        caption: Date Range (eg. 2016 - 2019)
-        quote: >
-          Short institution or course description (optional)
-        description: | # this will include new lines to allow paragraphs
-          Description of qualification
-  - title: A Little More About Me
-    layout: text
-    content: | # this will include new lines to allow paragraphs
-      This is where you can write a little more about yourself. You could title this section **Interests** and include some of your other interests.
+        title: Xi'an Jiaotong University
+        sub_title: M.S. in Software Engineering
+        caption: 2025.9-2028.6
+        description: |
+          Graduate student in the School of Software.
 
-      Or you could title it **Skills** and write a bit more about things that make you more desirable, like *leadership* or *teamwork*
+      - layout: top-right
+        title: Central South University
+        sub_title: B.E. in Automation
+        caption: 2021.9-2025.6
+        description: |
+          Weighted GPA: 91.64/100. Undergraduate rank: 4/27. CET-6: 578.
+
+          Core courses include Python Programming, Advanced Mathematics, Linear Algebra, Complex Variables, and Data Structures.
+
+  - title: Awards
+    layout: text
+    content: |
+      - Second Prize, the 14th Chinese Mathematics Competitions, 2023.01
+      - Second Prize, Hunan Provincial College Student Mathematics Competition, 2022.12
+      - Second Prize, Hunan Rice Cup Smart Car Competition, 2024.02
+      - Second Prize, Central South University Physics Competition, 2023.04
+      - National Encouragement Scholarship, 2022.09 and 2023.09
+      - Outstanding Student, Central South University, 2022.09 and 2023.09
 
 # Footer
-footer_show_references: true
-# references_title: References on request (Override references text)
+footer_show_references: false
 
 # Build settings
-# theme: modern-resume-theme (Use this is you are hosting your resume yourself)
-# remote_theme: sproogen/modern-resume-theme (Use this if you are hosting your resume on GitHub)
-
 sass:
   sass_dir: _sass
   style: compressed
 
 plugins:
- - jekyll-seo-tag
+  - jekyll-seo-tag
 
-exclude : [
-  "Gemfile",
-  "Gemfile.lock",
-  "node_modules",
-  "vendor/bundle/",
-  "vendor/cache/",
-  "vendor/gems/",
-  "vendor/ruby/",
-  "lib/",
-  "scripts/",
-  "docker-compose.yml",
-  ]
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - lib/
+  - scripts/
+  - docker-compose.yml
+  - WORKSPACE.md
+  - resume.example.md
+  - tmp-framework/

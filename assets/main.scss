@@ -3,3 +3,231 @@
 ---
 
 @import 'modern-resume-theme';
+
+:root {
+  --page-bg: #f8fafc;
+  --surface: #ffffff;
+  --text: #172033;
+  --muted: #667085;
+  --line: #d9e2ec;
+  --accent: #2563eb;
+  --accent-soft: #eff6ff;
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.container {
+  max-width: 920px;
+}
+
+.header-container {
+  margin-top: 56px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.header-left {
+  margin-top: 0;
+}
+
+h1 {
+  color: var(--text);
+  font-size: 4.2rem;
+  font-weight: 650;
+}
+
+h2 {
+  color: var(--muted);
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+h3 {
+  color: var(--text);
+  border-bottom: 1px solid var(--line);
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  text-align: left;
+}
+
+h4 {
+  color: var(--text);
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+p,
+ul {
+  color: var(--text);
+  font-size: 1.55rem;
+  line-height: 1.75;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:active,
+a:focus,
+a:hover {
+  color: #1d4ed8;
+}
+
+.button--sacnite::before {
+  box-shadow: inset 0 0 0 35px var(--accent-soft);
+}
+
+.button.button--sacnite {
+  color: var(--accent);
+}
+
+.button--sacnite:hover {
+  color: #1d4ed8;
+}
+
+.button--sacnite:hover::before {
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.layout {
+  margin-top: 2.4rem;
+}
+
+.layout .details p {
+  color: var(--muted);
+  font-size: 1.45rem;
+}
+
+p.quote {
+  color: var(--muted);
+  font-size: 1.45rem;
+  padding: 0.5rem 0;
+  text-align: left;
+}
+
+.footer-container {
+  border-top: 1px solid var(--line);
+  margin-top: 72px;
+  padding-top: 20px;
+}
+
+.footer-container p {
+  color: var(--muted);
+  font-style: normal;
+}
+
+.project-body {
+  background: var(--page-bg);
+}
+
+.project-header {
+  border-bottom: 1px solid var(--line);
+  padding: 42px 0 26px;
+}
+
+.project-home-link {
+  color: var(--muted);
+  display: inline-block;
+  font-size: 1.45rem;
+  margin-bottom: 22px;
+}
+
+.project-kicker {
+  color: var(--accent);
+  font-size: 1.45rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.project-header h1 {
+  font-size: 4rem;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.project-subtitle {
+  color: var(--muted);
+  font-size: 1.75rem;
+  line-height: 1.55;
+  max-width: 760px;
+  text-align: left;
+}
+
+.project-main {
+  padding: 34px 0 68px;
+}
+
+.project-article h2 {
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+  font-size: 2.1rem;
+  font-weight: 650;
+  margin: 42px 0 18px;
+  padding-bottom: 10px;
+  text-align: left;
+}
+
+.project-article p,
+.project-article li {
+  font-size: 1.58rem;
+  line-height: 1.78;
+}
+
+.project-article ul {
+  padding-left: 22px;
+}
+
+.project-figure {
+  margin: 0 0 34px;
+}
+
+.project-figure img,
+.project-video {
+  background: #fff;
+  border: 1px solid var(--line);
+  display: block;
+  height: auto;
+  max-width: 100%;
+  width: 100%;
+}
+
+.project-figure figcaption {
+  color: var(--muted);
+  font-size: 1.35rem;
+  line-height: 1.55;
+  margin-top: 10px;
+}
+
+.project-video {
+  margin: 14px 0 30px;
+}
+
+@media screen and (max-width: 767px) {
+  .header-container {
+    margin-top: 34px;
+  }
+
+  .header-container div,
+  .header-right p {
+    text-align: left;
+  }
+
+  h1 {
+    font-size: 3.3rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
+
+  .project-header h1 {
+    font-size: 3.1rem;
+  }
+}
