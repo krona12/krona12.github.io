@@ -48,14 +48,20 @@ content:
         sub_title: M.S. in Software Engineering
         caption: 2025.9-2028.6
         description: |
-          School of Software.
+          <div class="school-badge-line">
+            <img class="school-badge" src="/assets/xjtu.png" alt="Xi'an Jiaotong University badge">
+            <span>School of Software.</span>
+          </div>
 
       - layout: top-right
         title: Central South University
         sub_title: B.E. in Automation
         caption: 2021.9-2025.6
         description: |
-          Weighted GPA: 91.64/100. Undergraduate rank: 4/27. CET-6: 578.
+          <div class="school-badge-line">
+            <img class="school-badge" src="/assets/csu.gif" alt="Central South University badge">
+            <span>Weighted GPA: 91.64/100. Undergraduate rank: 4/27. CET-6: 578.</span>
+          </div>
 
   - title: Selected Work
     layout: list
@@ -88,6 +94,8 @@ content:
         title: Embodied AI Large Models Survey
         sub_title: A Comprehensive Review and Future Perspectives on Embodied AI Large Models
         caption: Survey paper, second author
+        link: 'https://kns.cnki.net/kcms2/article/abstract?v=29HrapzBqeUlFxl9LlVj7D0SoAvmS7hMnaJplobHmGpQQvmEHBhEeGXZl0j80EwmWOfkEXLpmzpaI5N5x_-aB8i43U0wA_rPHVD5n2vd3A7VV09ywFI18zGbJnM2aO7glbPblNmPWVRubxjTY859mKsCjl3a3c2O-il4Ryr-VSg=&uniplatform=NZKPT'
+        link_text: CNKI article
         additional_links: []
         quote: >
           A survey of Vision-Language-Action models and embodied AI systems.

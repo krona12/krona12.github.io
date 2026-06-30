@@ -209,6 +209,24 @@ p.quote {
   margin: 14px 0 30px;
 }
 
+.school-badge-line {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+  text-align: left;
+}
+
+.school-badge {
+  flex: 0 0 auto;
+  height: 46px;
+  object-fit: contain;
+  width: 46px;
+}
+
+.school-badge-line span {
+  display: inline-block;
+}
+
 @media screen and (max-width: 767px) {
   .header-container {
     margin-top: 34px;
@@ -229,5 +247,10 @@ p.quote {
 
   .project-header h1 {
     font-size: 3.1rem;
+  }
+
+  .school-badge-line {
+    justify-content: center;
+    text-align: center;
   }
 }

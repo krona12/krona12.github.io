@@ -33,5 +33,6 @@ PhysArtGen is a related research project on interactive articulated 3D assets fo
 
 **Survey paper, second author**
 
-This survey reviews Vision-Language-Action models and embodied AI large models, covering model architecture, multimodal fusion, action generation, simulation platforms, datasets, benchmarks, and future challenges.
+This survey reviews Vision-Language-Action models and embodied AI large models, covering model architecture, multimodal fusion, action generation, simulation platforms, datasets, benchmarks, and future challenges. [CNKI article][cnki-embodied-ai-review]
 
+[cnki-embodied-ai-review]: https://kns.cnki.net/kcms2/article/abstract?v=29HrapzBqeUlFxl9LlVj7D0SoAvmS7hMnaJplobHmGpQQvmEHBhEeGXZl0j80EwmWOfkEXLpmzpaI5N5x_-aB8i43U0wA_rPHVD5n2vd3A7VV09ywFI18zGbJnM2aO7glbPblNmPWVRubxjTY859mKsCjl3a3c2O-il4Ryr-VSg=&uniplatform=NZKPT

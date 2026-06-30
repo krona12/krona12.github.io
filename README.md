@@ -19,7 +19,7 @@ The homepage presents three selected works:
 
 1. **LANDER-Nav**
 2. **PhysArtGen**
-3. **A Comprehensive Review and Future Perspectives on Embodied AI Large Models**
+3. **A Comprehensive Review and Future Perspectives on Embodied AI Large Models** ([CNKI](https://kns.cnki.net/kcms2/article/abstract?v=29HrapzBqeUlFxl9LlVj7D0SoAvmS7hMnaJplobHmGpQQvmEHBhEeGXZl0j80EwmWOfkEXLpmzpaI5N5x_-aB8i43U0wA_rPHVD5n2vd3A7VV09ywFI18zGbJnM2aO7glbPblNmPWVRubxjTY859mKsCjl3a3c2O-il4Ryr-VSg=&uniplatform=NZKPT))
 
 Only two standalone detail links are intentionally created:
 
