@@ -41,27 +41,28 @@ about_content: |
 
 content:
   - title: Education
-    layout: list
-    content:
-      - layout: top-right
-        title: Xi'an Jiaotong University
-        sub_title: M.S. in Software Engineering
-        caption: 2025.9-2028.6
-        description: |
-          <div class="school-badge-line">
-            <img class="school-badge" src="/assets/xjtu.png" alt="Xi'an Jiaotong University badge">
-            <span>School of Software.</span>
+    layout: text
+    content: |
+      <div class="education-list">
+        <div class="education-card">
+          <img class="education-logo" src="/assets/xjtu.png" alt="Xi'an Jiaotong University">
+          <div class="education-copy">
+            <h4>Xi'an Jiaotong University</h4>
+            <p class="education-degree">M.S. in Software Engineering</p>
+            <p class="education-meta">School of Software · 2025.9-2028.6</p>
           </div>
+        </div>
 
-      - layout: top-right
-        title: Central South University
-        sub_title: B.E. in Automation
-        caption: 2021.9-2025.6
-        description: |
-          <div class="school-badge-line">
-            <img class="school-badge" src="/assets/csu.gif" alt="Central South University badge">
-            <span>Weighted GPA: 91.64/100. Undergraduate rank: 4/27. CET-6: 578.</span>
+        <div class="education-card">
+          <img class="education-logo" src="/assets/csu.gif" alt="Central South University">
+          <div class="education-copy">
+            <h4>Central South University</h4>
+            <p class="education-degree">B.E. in Automation</p>
+            <p class="education-meta">School of Automation · 2021.9-2025.6</p>
+            <p class="education-meta">Weighted GPA: 91.64/100 · Undergraduate rank: 4/27 · CET-6: 578</p>
           </div>
+        </div>
+      </div>
 
   - title: Selected Work
     layout: list

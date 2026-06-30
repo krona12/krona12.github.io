@@ -209,22 +209,48 @@ p.quote {
   margin: 14px 0 30px;
 }
 
-.school-badge-line {
+.education-list {
+  display: grid;
+  gap: 22px;
+}
+
+.education-card {
   align-items: center;
-  display: flex;
-  gap: 14px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 72px minmax(0, 1fr);
+}
+
+.education-logo {
+  display: block;
+  height: 64px;
+  object-fit: contain;
+  width: 64px;
+}
+
+.education-copy h4 {
+  font-size: 2rem;
+  font-weight: 650;
+  line-height: 1.25;
+  margin: 0 0 4px;
+}
+
+.education-copy p {
+  margin: 0;
   text-align: left;
 }
 
-.school-badge {
-  flex: 0 0 auto;
-  height: 46px;
-  object-fit: contain;
-  width: 46px;
+.education-degree {
+  color: var(--text);
+  font-size: 1.55rem;
+  font-weight: 500;
+  line-height: 1.55;
 }
 
-.school-badge-line span {
-  display: inline-block;
+.education-meta {
+  color: var(--muted);
+  font-size: 1.42rem;
+  line-height: 1.55;
 }
 
 @media screen and (max-width: 767px) {
@@ -249,8 +275,19 @@ p.quote {
     font-size: 3.1rem;
   }
 
-  .school-badge-line {
-    justify-content: center;
+  .education-card {
+    gap: 14px;
+    grid-template-columns: 58px minmax(0, 1fr);
     text-align: center;
+  }
+
+  .education-logo {
+    height: 52px;
+    width: 52px;
+  }
+
+  .education-copy h4,
+  .education-copy p {
+    text-align: left;
   }
 }
