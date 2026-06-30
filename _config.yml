@@ -5,19 +5,17 @@ baseurl: ""
 favicon: assets/favicon.ico
 lang: en
 
-# Content configuration version
 version: 2
 
 # Personal info
 name: Kai Liu
-title: Embodied AI / Vision-Language Navigation / Robotic 3D Assets
+title: Embodied AI / Vision-Language Navigation / Computer Vision
 email:
 phone:
 website: https://krona12.github.io
 
 darkmode: never
 
-# Social links. Fill these later when account names are ready.
 twitter_username:
 github_username: krona12
 stackoverflow_username:
@@ -34,65 +32,14 @@ googlescholar_username:
 
 additional_links: []
 
-# About Section
 about_title: About
 about_profile_image: assets/profile.png
 about_content: |
   Kai Liu received the B.E. degree in Automation from the School of Automation, Central South University in 2025. He is currently pursuing the M.S. degree in Software Engineering at Xi'an Jiaotong University.
 
-  His research interests include embodied intelligence, vision-language navigation, vision-language-action models, computer vision, and physically grounded 3D asset generation for robotics.
+  His research interests include embodied intelligence, vision-language navigation, vision-language-action models, and computer vision.
 
 content:
-  - title: Research Focus
-    layout: text
-    content: |
-      I am interested in building embodied agents that can connect language, perception, memory, geometry, and action. My recent work spans open-vocabulary navigation, landmark-grounded spatial reasoning, articulated 3D asset generation, and surveys of Vision-Language-Action systems.
-
-      **Standalone project pages:** [LANDER-Nav](/projects/lander-nav/) and [PhysArtGen](/projects/physartgen/).
-
-  - title: Selected Work
-    layout: list
-    content:
-      - layout: top-right
-        title: LANDER-Nav
-        sub_title: Progressive Landmark-Schema Grounding for Multi-Granularity Open-Vocabulary Navigation
-        caption: AAAI submission, first author | 2026.3-present
-        link: /projects/lander-nav/
-        link_text: Project page
-        additional_links: []
-        quote: >
-          A navigation framework that grounds free-form language into target-anchor-context-relation landmark schemas.
-        description: |
-          LANDER-Nav addresses multi-granularity open-vocabulary navigation, where an embodied agent must locate category-, region-, or instance-level targets in unseen environments. The method avoids compressing complex instructions into a single query and instead performs progressive grounding over frontier evidence, object-memory entity binding, and verifiable endpoint selection.
-
-          It introduces role-conditioned spatial voting, landmark-anchored object binding, and Landmark-Ray Endpoint Search. On LangMap, Overall SR/SPL improves from 42.0/25.3 to 45.5/28.6 compared with MTU3D, with stronger gains on region- and instance-level targets.
-
-      - layout: top-right
-        title: PhysArtGen
-        sub_title: Interactive and Physically Controllable Articulated 3D Assets Generation
-        caption: AAAI submission, second author | 2025.7-2026.2
-        link: /projects/physartgen/
-        link_text: Project page
-        additional_links: []
-        quote: >
-          A text-conditioned pipeline for generating articulated 3D assets that can be compiled into URDF and used in robotic interaction.
-        description: |
-          PhysArtGen targets scalable creation of diverse, physically coherent, and interactive 3D assets for embodied intelligence. The framework goes from semantic understanding, to part-level 3D generation, to Actor-Critic-Verifier URDF optimization.
-
-          I participated in the Physics Adapter design for preserving relative part scale and position, the multi-agent URDF refinement pipeline, PhysArtSet construction, and experimental evaluation. PhysArtSet covers 29 object categories, 16 canonical part types, over 1,000 high-quality instances, and 2,800 synthesized parts.
-
-      - layout: top-right
-        title: Embodied AI Large Models Survey
-        sub_title: A Comprehensive Review and Future Perspectives on Embodied AI Large Models
-        caption: Published in Radio Engineering, second author | 2025.6-2025.9
-        additional_links: []
-        quote: >
-          A survey of Vision-Language-Action models, embodied AI resources, and open research challenges.
-        description: |
-          This survey reviews embodied AI large models with a focus on VLA systems. It summarizes visual encoders, language backbones, multimodal fusion strategies, action-token modeling, diffusion- and flow-based continuous action generation, simulators, datasets, benchmarks, and evaluation metrics.
-
-          The review covers resources such as AI2-THOR, Habitat, Isaac Sim/Gym, OXE, BridgeData V2, ALFRED, and LIBERO, and discusses challenges including generalization, data efficiency, long-horizon reasoning, and real-time response.
-
   - title: Education
     layout: list
     content:
@@ -101,7 +48,7 @@ content:
         sub_title: M.S. in Software Engineering
         caption: 2025.9-2028.6
         description: |
-          Graduate student in the School of Software.
+          School of Software.
 
       - layout: top-right
         title: Central South University
@@ -110,22 +57,45 @@ content:
         description: |
           Weighted GPA: 91.64/100. Undergraduate rank: 4/27. CET-6: 578.
 
-          Core courses include Python Programming, Advanced Mathematics, Linear Algebra, Complex Variables, and Data Structures.
+  - title: Selected Work
+    layout: list
+    content:
+      - layout: top-right
+        title: LANDER-Nav
+        sub_title: Progressive Landmark-Schema Grounding for Open-Vocabulary Navigation
+        caption: Project showcase, first author
+        link: /projects/lander-nav/
+        link_text: Overview
+        additional_links: []
+        quote: >
+          Landmark-guided reasoning for open-vocabulary embodied navigation.
+        description: |
+          LANDER-Nav explores how an embodied agent can use target, anchor, context, and relation cues from natural language to navigate toward more precise goals in unseen environments.
 
-  - title: Awards
-    layout: text
-    content: |
-      - Second Prize, the 14th Chinese Mathematics Competitions, 2023.01
-      - Second Prize, Hunan Provincial College Student Mathematics Competition, 2022.12
-      - Second Prize, Hunan Rice Cup Smart Car Competition, 2024.02
-      - Second Prize, Central South University Physics Competition, 2023.04
-      - National Encouragement Scholarship, 2022.09 and 2023.09
-      - Outstanding Student, Central South University, 2022.09 and 2023.09
+      - layout: top-right
+        title: PhysArtGen
+        sub_title: Interactive and Physically Controllable Articulated 3D Assets
+        caption: Project showcase, second author
+        link: /projects/physartgen/
+        link_text: Overview
+        additional_links: []
+        quote: >
+          A related project on articulated 3D assets for embodied simulation.
+        description: |
+          PhysArtGen generates articulated assets that can be assembled into URDF and used for robot interaction in simulation. My work focuses on physical-consistency design, URDF optimization, dataset construction, and evaluation.
 
-# Footer
+      - layout: top-right
+        title: Embodied AI Large Models Survey
+        sub_title: A Comprehensive Review and Future Perspectives on Embodied AI Large Models
+        caption: Survey paper, second author
+        additional_links: []
+        quote: >
+          A survey of Vision-Language-Action models and embodied AI systems.
+        description: |
+          This survey summarizes VLA model architectures, multimodal fusion, action generation, simulation platforms, datasets, benchmarks, and open challenges in embodied AI.
+
 footer_show_references: false
 
-# Build settings
 sass:
   sass_dir: _sass
   style: compressed

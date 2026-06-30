@@ -1,6 +1,6 @@
 # Kai Liu Personal Homepage
 
-This repository is the local workspace for Kai Liu's GitHub Pages personal homepage. The site is based on a light, concise Jekyll resume theme and has been reorganized around research experience in embodied intelligence, vision-language navigation, VLA models, and physically grounded 3D asset generation.
+This repository is the local workspace for Kai Liu's GitHub Pages personal homepage. The site is based on a light, concise Jekyll resume theme and focuses on embodied intelligence, vision-language navigation, VLA models, and computer vision.
 
 ## Profile Source
 
@@ -8,8 +8,8 @@ The primary content source is [`resume.md`](resume.md). It contains:
 
 - English biography and education background
 - Research interests
-- Three selected research/project entries
-- Awards and academic record
+- Three selected work entries
+- Education and academic record
 
 The website should be updated from `resume.md` first, then reflected in the Jekyll homepage configuration and project pages.
 
@@ -17,8 +17,8 @@ The website should be updated from `resume.md` first, then reflected in the Jeky
 
 The homepage presents three selected works:
 
-1. **LANDER-Nav: Progressive Landmark-Schema Grounding for Multi-Granularity Open-Vocabulary Navigation**
-2. **PhysArtGen: Interactive and Physically Controllable Articulated 3D Assets Generation**
+1. **LANDER-Nav**
+2. **PhysArtGen**
 3. **A Comprehensive Review and Future Perspectives on Embodied AI Large Models**
 
 Only two standalone detail links are intentionally created:
